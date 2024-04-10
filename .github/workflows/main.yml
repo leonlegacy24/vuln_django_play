@@ -27,7 +27,7 @@ jobs:
          safety scan
       - uses: actions/upload-artifact@v2
         with:
-          api-key: ${{secrets.dff069b7-f9fb-4bba-a20e-627b81f37330}}
+          api-key: ${{secrets.leon}}
           name: logs
           path: logs/result-safety.txt   
           
