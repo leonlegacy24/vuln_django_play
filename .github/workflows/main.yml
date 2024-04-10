@@ -24,7 +24,7 @@ jobs:
       - name: Safety
         run: |
          pip install safety
-         safety check -r environment/app/web/requirements.txt > logs/result-safety.txt
+         safety scan
       - uses: actions/upload-artifact@v2
         with:
           name: logs
