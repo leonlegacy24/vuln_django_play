@@ -26,7 +26,7 @@ jobs:
       - name: Safety
         run: |
          pip install safety
-         safety check || true
+         safety check > safety-report.txt || true
       - uses: actions/upload-artifact@v2
         with:
           name: safety-scan-results
