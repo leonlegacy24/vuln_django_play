@@ -13,23 +13,25 @@ jobs:
       
       - name: Build docker-compose
         run: docker-compose up -d
-
-  safety:
+  sca:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      - name: Install Safety and Run Scan
-        run: |
-          pip install safety
-          safety scan --key ${{secrets.SAFETY_API_KEY}}
-      
-      - name: Upload Safety Scan Results
-        uses: actions/upload-artifact@v2
+      - uses: actions/checkout@v2
         with:
-          name: safety-scan-results
-          path: safety-report.txt   
+          api-key: ${{ secrets.SAFETY_API_KEY }}
+      
+      - run: |
+          mkdir -p logs/
+      - name: Safety
+        run: |
+         pip install safety
+         safety check
+      - uses: actions/upload-artifact@v2
+        with:
+          name: logs
+          path: logs/result-safety.txt
+   
           
 
       - name: Pyraider
