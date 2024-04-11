@@ -32,15 +32,20 @@ jobs:
         with:
           name: logs
           path: logs/safety-report.txt
-          
-      - name: Pyraider
-        run: |
-          pip install pyraider
-          pyraider go  > logs/result-pyraider.txt
-          
-      - uses: actions/upload-artifact@v2
-        with:
-          name: logs
-          path: logs/result-pyraider.txt
-   
+  dast:
+    needs: [build, sca]
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checkout
+       uses: actions/checkout@v2
+    
+     - name: Build Image for testing
+       run: docker-compose up -d
+ 
+     - name: ZAP Scan
+       uses: zaproxy/action-baseline@v0.6.1
+       with:
+         target: 'http://localhost:5000'
+         cmd_options: '-a'          
+  
 
