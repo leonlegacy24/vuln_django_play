@@ -61,7 +61,7 @@ jobs:
        run: docker-compose up -d
  
      - name: ZAP Scan
-       uses: zaproxy/action-baseline@v0.6.1
+       uses: zaproxy/action-baseline@v0.12.0
        with:
          target: 'http://localhost:8020/polls/'
          cmd_options: '-aJ'          
