@@ -64,6 +64,6 @@ jobs:
        uses: zaproxy/action-baseline@v0.12.0
        with:
          target: 'http://localhost:8020/polls/'
-         cmd_options: '-aJ'          
+         cmd_options: '-a'          
   
 
