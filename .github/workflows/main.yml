@@ -43,7 +43,7 @@ jobs:
       
       - uses: jpetrucciani/bandit-check@master
         with:
-          path: './vuln_django'
+          path: './polls'
           bandit_flags: '-lll -r -o logs/output.json -f json'
     
       - uses: actions/upload-artifact@v2
