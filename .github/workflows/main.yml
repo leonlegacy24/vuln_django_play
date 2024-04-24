@@ -43,8 +43,8 @@ jobs:
       
       - uses: jpetrucciani/bandit-check@master
         with:
-          path: './manage.py'
-          bandit_flags: '-lll -o logs/output.json -f json'
+          path: 'vuln_django_play/vuln_django'
+          bandit_flags: '-lll -r -o logs/output.json -f json'
     
       - uses: actions/upload-artifact@v2
         with:
